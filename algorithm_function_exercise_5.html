@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+// 	5. Write function that translates a text to Pig Latin and back. English is translated to Pig Latin by taking the first letter of every word, moving it to the end of the word and adding "ay".
+
+// "The quick brown fox" -> "Hetay uickqay rownbay oxfay".
+// (source: https://adriann.github.io/programming_problems.html)
+
+//TO PIGLATIN FROM ENGLISH
+	function toPigLatin(input_string) {
+		var wordArr = input_string.split(" ");
+		var pigLatin = [];
+		for (var i = 0; i < wordArr.length; i++) {
+			var letterArr = wordArr[i].split("");
+		 	for (var j = 0; j < letterArr.length; j++) {
+    			var copy = letterArr.slice();
+    			copy.splice(0, 1);
+			 	copy.splice(letterArr.length, 0, letterArr[0] + "ay");	
+			 	var final = copy.join("").toLowerCase();
+			}
+			pigLatin.push(final);
+		} 
+		var firstLet = pigLatin[0].slice(0, 1).toUpperCase(); 
+		var toSplit = pigLatin[0].split("");
+		toSplit[0] = firstLet;
+		pigLatin[0] = toSplit.join("");
+		return pigLatin.join(" ");
+	 }
+ console.log(toPigLatin("The quick brown fox"))
+
+
+//TO ENGLISH FROM PIG LATIN
+	function toEnglish(input_string) {
+ 		var wordArr = input_string.split(" ");
+		var English = [];
+		for (var i = 0; i < wordArr.length; i++) {
+			var letterArr = wordArr[i].split("");
+			 for (var j = 0; j < letterArr.length; j++) {
+     				var norm = letterArr.slice();
+     				norm.pop();
+					norm.pop();
+     				var firstLet = norm.pop();
+	 	 	 		norm.splice(letterArr[0], 0, firstLet)
+	 	 	 	var final = norm.join("").toLowerCase();
+	 		} 
+			 English.push(final);
+		 }
+		var firstLet = English[0].slice(0, 1).toUpperCase(); 
+	  	var toSplit = English[0].split("");
+	  	toSplit[0] = firstLet;
+	  	English[0] = toSplit.join("");
+	  	return English.join(" ");	
+}
+console.log(toEnglish("Hetay uickqay rownbay oxfay"))
+
+
+// //EXAMPLE
+// 	function disemvowelWord(word) {
+// 		var noVowels = [];
+// 		for (var letter of word) {
+// 			if ("aeiou".indexOf(letter.toLowerCase) === -1) {
+// 				noVowels.push(letter);
+// 			}
+// 		} return noVowels.join("")
+// 	}
+
+// console.log(disemvowelWord("hello") === "hll");
+// console.log(disemvowelWord("world") === "wrld");
+
+
+// 	function disemvowel(str) {
+// 		var noVowels = [];
+// 		str = str.split(" ");
+// 		for (var word of str) {
+// 			noVowels.push(disemvowelWord(word));
+// 		} 
+// 		return noVowels.join("")
+// 	}
+
+// 	console.log(disemvowel("hello world") === "hll wrld");
+// 	console.log(disemvowel("aeiou and sometimes y") === " nd smtms y");
+// 	console.log(disemvowel("xyzzy") === "xyzzy")
+
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+// 	8. Write a function which takes no input and returns an array of 10 distinct randomly generated integers between 1 and 100.
+
+// -> [48, 5, 32, 2, 10, 11, 34, 95, 82, 93] (good!)
+// -> [1, 1, 24, 63, 45, 84, 17, 11, 59, 13] (bad - duplicated number)
+
+	function tenNums () {
+		var nums = [];
+		while(nums.length < 10) {
+			var max = 100;
+			var min = 1;
+			var randomInt = Math.floor(Math.random() * ((max - min) + min));
+			if (nums.indexOf(randomInt) === -1) {
+				nums.push(randomInt)
+			}
+		} return nums
+	}
+console.log(tenNums());
+console.log(tenNums());
+console.log(tenNums());
+
+
+
+	</script>
+</body>
+</html>

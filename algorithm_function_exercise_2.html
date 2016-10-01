@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 2. Write a funciton which, given a year as a number, returns whether that number is a leap year.
+
+// 2000 -> true
+// 1900 -> false
+// 2016 -> true
+
+//writing a function
+//checking if divisible by 4, but every 5th year we skip
+//checking if divisible by 100 (as per James's astronomical observations)
+//check if divisible by 400 (as per James's astronomical observations)
+//if those are true, then return wthether the year is a leap year
+
+function leapYear(year) {
+	if ((year % 4 === 0) && ((year % 100 !== 0) || (year % 400 === 0))) {
+		return (year + " is a leap year!")
+	} else {
+		return (year + " is not a leap year :( ")
+	}
+}
+
+console.log(leapYear(2000));
+console.log(leapYear(1900));
+console.log(leapYear(2016))
+
+
+	</script>
+</body>
+</html>

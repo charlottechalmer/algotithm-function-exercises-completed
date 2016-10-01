@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+// 	10. Write a function which, given an array, determines the subarray with the largest sum.
+
+// [1, 3, -4, 5, 7, 9] -> [5, 7, 9]
+// [1, 5, -4, 3, 2, -3] -> [1, 5, -4, 3, 2]
+// [2, 2, -10, 5, -10, 2, 2] -> [5]
+
+// (Source: http://venus.cs.qc.edu/~ryba/cs111/Array.pdf with edits)	
+
+function maxSubsequence(arr) {
+	var maxValue = 0;
+	var subsequence = [];
+ 
+	for(var i = 0; i < arr.length; i++) {
+		for(var j = i; j <= arr.length; j++) {
+			var subsequence = arr.slice(i, j); //this checks the sum at any number of elements (i, j)
+			var value = sumValues(subsequence);
+			if(value > maxValue) {
+				maxValue = value;
+				var largestSumSeq = subsequence;
+			};
+		}
+	}
+ 
+	return largestSumSeq;
+}
+ 
+function sumValues(arr) {
+	var result = 0;
+	for(var i = 0; i < arr.length; i++) {
+		result += arr[i];
+	} 
+	return result;	
+}
+
+console.log(maxSubsequence([1, 3, -4, 5, 7, 9])); //this doesnt return [5, 7, 9] but [1, 3, -4, 5, 7, 9] because they both equal 21
+console.log(maxSubsequence([1, 5, -4, 3, 2, -3]));
+console.log(maxSubsequence([2, 2, -10, 5, -10, 2, 2]))
+
+
+
+	</script>
+</body>
+</html>
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+//1. Write a function which takes an array of numbers and returns the mode of that array.
+// [2, 4, 4, 4, 6, 6, 1] - > 4
+// [0, 0, 0, 10] -> 0
+// [1] -> 1
+
+//REMEMBER that 0 is undefined***** have to assign the zero value at a given index
+
+	function mode (arr) {
+		var counts = []; //empty array to put in the count of how many times each element appears
+        var i, j;
+        var maxcount = 1; //start at one because any number in the array is going to show up a minimum of 1x
+        var maxnum = arr[0]; //have to set to zero to then change the value and have the output be the mode
+
+        for (i = 0; i < arr.length; i++) {
+            if (counts[arr[i]] === undefined) {
+                counts[arr[i]] = 0; //because zero is an undefined value in javascript, this is overwriting the value
+            }
+            counts[arr[i]] = counts[arr[i]] + 1; //this loops through all the values in array and adds one to counts for each time it appears
+        }
+
+        for (j = 0; j < counts.length; j++) {
+            if (counts[j] > maxcount) { 
+                maxcount = counts[j];
+                maxnum = j; //this is saying that if counts at a certain index is greater than the counter -maxcount (which began at one- the minimum of frequency for any given element in this array), then we change the value of max count to the count at that index. This mean that after looping through all of the counts array, the counter would then be equal to the frequency of the most frequently appearing number. The max number then takes on the value of that number, and therefore...
+            }
+        }
+        return maxnum; //... returns the mode!
+    }
+
+    console.log(mode([2, 4, 4, 4, 6, 6, 1]) === 4);
+    console.log(mode([0, 0, 0, 10]) === 0);
+    console.log(mode([1]) === 1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>
